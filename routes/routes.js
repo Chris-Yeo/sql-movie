@@ -12,7 +12,8 @@ const {
     getAllMovies,
     getOneMovie,
     addMovie,
-    deleteMovie
+    deleteMovie,
+    updateMovie
 } = require('../controllers/movies')
 
 const {
@@ -38,6 +39,7 @@ router.get('/movies', getAllMovies);
 router.get('/movies/:id', getOneMovie);
 router.post('/movies/uploadmovie', addMovie);
 router.delete('/movies/:id', deleteMovie);
+router.put('/movies/:id', updateMovie)
 
 router.post('/subscription/register', makeSubscription)
 // router.post('/subscription/:id', onSubscription);

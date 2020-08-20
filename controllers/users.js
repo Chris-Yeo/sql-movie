@@ -108,7 +108,8 @@ module.exports = {
             } else {
                 res.send ({
                     message: 'Profile Deleted',
-                    status: 200
+                    status: 200,
+                    result
                 })
             }
         })

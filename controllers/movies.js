@@ -32,7 +32,8 @@ module.exports = {
             } else {
                 res.send ({
                     message: "Here's the movie you requested!",
-                    status: 200
+                    status: 200,
+                    result
                 })
             }
         })
@@ -57,9 +58,9 @@ module.exports = {
         })
     },
 
-    deleteMovie: (req,res) => {
+    deleteMovie: (req, res) => {
         const {id} = req.params;
-        const myQuery = `DELETE FROM movies WHERE id=${id}`;
+        const myQuery = `DELETE FROM movies WHERE id=${id}`
         connection.query(myQuery, (error,result) => {
             if(error) {
                 res.send ({
@@ -69,9 +70,29 @@ module.exports = {
             } else {
                 res.send ({
                     message: 'Movie Deleted',
-                    status: 200
+                    status: 200,
+                    result
                 })
             }
         })
+    },
+
+    updateMovie: (req, res) => {
+        const {id} = req.params;
+                const myQuery = `UPDATE movies SET title=${title}, year=${year}, genre=${genre}, description=${description}, url_trailer=${url_trailer} WHERE id=${id}`;
+                connection.query(myQuery, (error,result) => {
+                    if(error) {
+                        res.send ({
+                            message: 'Error Detected',
+                            status: 500
+                        })
+                    } else {
+                        res.send ({
+                            message: 'Update Successful!',
+                            status: 201, 
+                            result
+                        })
+                    }
+                })
     }
 }
