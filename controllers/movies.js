@@ -21,7 +21,7 @@ module.exports = {
     },
 
     getOneMovie: (req,res) => {
-        const myQuery = `SELECT * FROM movies WHERE id=${id}`;
+        const myQuery = `SELECT * FROM movies WHERE id_movie=${id}`;
         connection.query(myQuery, (error, result) => {
             if(error) {
                 console.log(error)
@@ -60,9 +60,10 @@ module.exports = {
 
     deleteMovie: (req, res) => {
         const {id} = req.params;
-        const myQuery = `DELETE FROM movies WHERE id=${id}`
+        const myQuery = `DELETE FROM movies WHERE id_movie=${id}`
         connection.query(myQuery, (error,result) => {
             if(error) {
+                console.log(error)
                 res.send ({
                     message: "Error Detected",
                     status: 500,
@@ -79,7 +80,7 @@ module.exports = {
 
     updateMovie: (req, res) => {
         const {id} = req.params;
-                const myQuery = `UPDATE movies SET title=${title}, year=${year}, genre=${genre}, description=${description}, url_trailer=${url_trailer} WHERE id=${id}`;
+                const myQuery = `UPDATE movies SET title=${title}, year=${year}, genre=${genre}, description=${description}, url_trailer=${url_trailer} WHERE id_movie=${id}`;
                 connection.query(myQuery, (error,result) => {
                     if(error) {
                         res.send ({

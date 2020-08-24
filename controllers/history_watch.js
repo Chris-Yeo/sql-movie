@@ -44,7 +44,7 @@ module.exports = {
 
     deleteHistory: (req, res) => {
         const {id} = req.params;
-        const myQuery = `DELETE FROM history_watch WHERE id=${id}`
+        const myQuery = `DELETE FROM history_watch WHERE id_history=${id}`
         connection.query(myQuery, (error,result) => {
             if(error) {
                 res.send ({

@@ -22,7 +22,7 @@ module.exports = {
 
     getOneUser: (req,res) => {
         const {id} = req.params;
-        const myQuery = `SELECT * FROM users WHERE id=${id}`;
+        const myQuery = `SELECT * FROM users WHERE id_user=${id}`;
         connection.query(myQuery, (error, result) => {
             if(error) {
                 res.send ({
@@ -76,7 +76,7 @@ module.exports = {
                 })
             } else {
                 const {id} = req.params
-                const myQuery = `UPDATE users SET fullname=${fullname}, username=${username}, email=${email}, password=${hashedPassword}, address=${address} WHERE id=${id}`;
+                const myQuery = `UPDATE users SET fullname=${fullname}, username=${username}, email=${email}, password=${hashedPassword}, address=${address} WHERE id_user=${id}`;
                 connection.query(myQuery, (error, result) => {
                     if(error) {
                         console.log(error)
@@ -98,7 +98,7 @@ module.exports = {
 
     deleteProfile: (req,res) => {
         const {id} = req.params;
-        const myQuery = `DELETE FROM users WHERE id=${id}`
+        const myQuery = `DELETE FROM users WHERE id_user=${id}`
         connection.query(myQuery, (error,result) => {
             if(error) {
                 res.send ({
